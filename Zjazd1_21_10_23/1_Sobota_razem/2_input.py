@@ -10,3 +10,4 @@ print('Cześć', imie, '. Masz', wiek, 'lat.')
 print(f'Cześć {imie}. Masz {wiek} lat.')
 
 print(f'Przejdziesz na emerytuję za {65 - int(wiek)} lat')
+
