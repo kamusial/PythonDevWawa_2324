@@ -1,4 +1,4 @@
-print('Dzien dobry')   # pojedyncze sudzysłowy
+print('Dzien dobry')   # pojedyncze cudzysłowy
 print("Dzien dobry")   # podwójne cudzysłowy
 print("She's great")
 
