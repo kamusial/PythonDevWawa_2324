@@ -1,12 +1,14 @@
 def user_add(username):
     while True:
         passwd1 = input('Podaj haslo: ')
-        passwd2 = input('Podaj jeszcze raz haslo: ')
-
-        if passwd1 == passwd2 and is_passwd_correct(passwd1):
-            user_dict[username] = passwd1
-            print(f'uzytkownik {username} dodany do listy uzytkowników')
-            break
+        if is_passwd_correct(passwd1):
+            passwd2 = input('Podaj jeszcze raz haslo: ')
+            if passwd1 == passwd2:
+                user_dict[username] = passwd1
+                print(f'uzytkownik {username} dodany do listy uzytkowników')
+                break
+            else:
+                print(f'podano rozne hasla')
 
 def is_username_available(username):
     if username not in user_dict:
@@ -58,10 +60,6 @@ def is_passwd_correct(password):
 
 special_characters = set('.,/;!@#$%\'\"\\')
 digits = set('0123456789')
-
-# set2 = set[1, 2, 3, 5]
-# set1 | set2 -> suma
-# set1 & set2 -> część wspólna
 
 
 user_dict = {
