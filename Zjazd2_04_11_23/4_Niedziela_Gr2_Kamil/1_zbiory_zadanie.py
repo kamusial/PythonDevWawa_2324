@@ -36,3 +36,31 @@ print(f'Liczba osób {len(zoliborz & chorzy_miesiac)}')
 print(f'Ludzie chorujący w ostatniem miesiącu i NIE chorujący w ostatnim roku: {chorzy_miesiac - chorzy_rok}')
 
 # nikt nie powinien mieszkać jendocześnie na żoliborzu i na bemowie – jeśli tak, trzeba usunąć
+print(f'Ludzie mieszkający jendocześnie na żoliborzu i bemowie: {bemowo & zoliborz}')
+x = input('skąd usunąć?   B - Bemowo,  Z - Zoliborz: ')
+if x == 'B':
+    bemowo = bemowo - (bemowo & zoliborz)
+elif x == 'Z':
+    wspolne = bemowo & zoliborz
+    for pesel in wspolne:
+        zoliborz.remove(pesel)
+else:
+    print('Nie rozpoznano wyboru, usuwam z Bemowa')
+    bemowo -= zoliborz
+print(f'Ludzie mieszkający jendocześnie na żoliborzu i bemowie: {bemowo & zoliborz}')
+
+# każdy: chory, zdrowy, z bemowa i z zoliborza, powinien być w bazie NFZ. Jeśli nie ma, trzeba dopisać
+wszyscy = chorzy_rok | chorzy_miesiac | bemowo | zoliborz
+print(f'Ludzie którzy nie są na liście NFZ: {wszyscy - NFZ}')
+NFZ += wszyscy
+
+# pesele żeńskie mają ostatnią cyfrę parzystą, męskie – nieparzystą.
+# zróbmy nowe zbiory, osobne dla mężczyzn i kobiet
+NFZ_men = set()
+NFZ_women = set()
+for pesel in NFZ:
+    if pesel % 2 == 0:
+        NFZ_women.add(pesel)
+NFZ_men = NFZ - NFZ_women
+
+
