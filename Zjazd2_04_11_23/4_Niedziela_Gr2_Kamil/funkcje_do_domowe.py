@@ -1,10 +1,11 @@
 def user_add(username):
-    passwd1 = input('Podaj haslo: ')
-    passwd2 = input('Podaj jeszcze raz haslo: ')
-    if passwd1 == passwd2:
-        user_dict[username] = passwd1
-    print(f'uzytkownik {username} dodany do listy uzytkowników')
-
+    while True:
+        passwd1 = input('Podaj haslo: ')
+        passwd2 = input('Podaj jeszcze raz haslo: ')
+        if passwd1 == passwd2:
+            user_dict[username] = passwd1
+            print(f'uzytkownik {username} dodany do listy uzytkowników')
+            break
 
 def is_username_available(username):
     if username not in user_dict:
