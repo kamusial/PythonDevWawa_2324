@@ -33,10 +33,21 @@ user_list = ['majki', 'Kamil', 'Kamil1', 'Kamil11', 'Kamil111', 'Kamil001', 'Raf
 
 
 username = input('Podaj nazwe uzytkownika: ')
-if is_username_available(username):
-    user_add(username)
-else:
-    username = find_available_name(username)
+
+while True:
+    if is_username_available(username):
+        user_add(username)
+        break
+    else:
+        username = find_available_name(username)
+        decission = input(f'Chcesz uzyć nazwe {username} (1), czy wpisać swoją? (2)  ')
+        if decission == '1':
+            user_add(username)
+            break
+        else:
+            username = input('Podaj nową nazwę uzytkownika: ')
+print(f'uzytkownicy: {user_list}')
+
 
 
 
