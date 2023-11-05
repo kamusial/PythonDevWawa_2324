@@ -4,3 +4,4 @@ def przywitaj():
 
 
 przywitaj()
+#komentarz
