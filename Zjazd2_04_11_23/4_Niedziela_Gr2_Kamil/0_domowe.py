@@ -27,7 +27,7 @@ while True:
             break
         else:
             username = input('Podaj nową nazwę uzytkownika: ')
-print(f'uzytkownicy: {user_list}')
+print(f'uzytkownicy: {user_dict}')
 
 
 

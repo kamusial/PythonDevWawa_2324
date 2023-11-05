@@ -1,10 +1,10 @@
 def user_add(username):
-    user_list.append(username)
+    user_dict.append(username)
     print(f'uzytkownik {username} dodany do listy uzytkowników')
 
 
 def is_username_available(username):
-    if username not in user_list:
+    if username not in user_dict:
         print(f'Nazwa {username} dozwolona')
         return True
     else:
@@ -24,4 +24,13 @@ def find_available_name(username):
     return username
 
 
-user_list = ['majki', 'Kamil', 'Kamil1', 'Kamil11', 'Kamil111', 'Kamil001', 'Rafcio', 'Betty']
+user_dict = {
+    'majki': '123',
+    'Kamil': '124',
+    'Kamil1': '234',
+    'Kamil11': '765',
+    'Kamil111': 'mama',
+    'Kamil001': 'eee',
+    'Rafcio': '876',
+    'Betty': 'betty'
+}
