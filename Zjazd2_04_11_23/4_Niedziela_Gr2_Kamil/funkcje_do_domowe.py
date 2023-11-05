@@ -1,5 +1,5 @@
 def user_add(username):
-    user_dict.append(username)
+    user_dict[username] = input('Podaj haslo: ')
     print(f'uzytkownik {username} dodany do listy uzytkowników')
 
 
