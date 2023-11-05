@@ -6,6 +6,7 @@
 
 # import funkcje_do_domowe
 # funkcje_do_domowe.is_username_available()
+# haslo zawiera, cyfrę, dużą i małą literę i znak specjalny
 
 from funkcje_do_domowe import *
 
