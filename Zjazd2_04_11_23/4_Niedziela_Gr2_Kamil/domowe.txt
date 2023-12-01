@@ -1,0 +1,12 @@
+1. Rozwinąć program tworzony na zajęciach. 
+Chcemy, aby system podpowiadał ładną, podobną nazwę użytkownika, jeśli dana nazwa jest zajęta.
+Chcemy, aby haśło nie mogło zawierać ciągu znaków '12345'   bądź, aby nie mogło zawierać załego zestawu takich słabych wzorów.
+
+2. 
+Dany jest słownik, wskazujący ile mamy produktów:
+dict1 = {'mleko' = 3, 'jajko' = 25, 'maka' = 7, 'cukier' = 4, 'maliny' = 3}
+
+Dany jest również słownik wskazując ile jakich produktów potrzebujemy, aby zrobić ciasto:
+dict1 = {'mleko' = 1, 'jajko' = 8, 'maka' = 0.5, 'cukier' = 0.3}
+
+Zadanie, napisać program liczący, ile ciast możemy upiec z posiadanych produktów.
