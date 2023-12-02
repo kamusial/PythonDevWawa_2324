@@ -7,3 +7,9 @@ def my_function(a):
 slowo = 'piesek'
 for i in slowo:
     print(i)
+
+def tax(income, no_of_children, savings = 0):
+    return income * .2 + no_of_children * 0.95 + savings * 0.1
+
+print(tax(5000, 3))
+

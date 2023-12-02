@@ -1,5 +1,5 @@
-def make_split(text: str) -> list:
-    return text.split()
+def make_split(text: str, separator: str = ' ') -> list:
+    return text.split(separator)
 
 def no_of_words(text: list) -> int:
     return len(text)
