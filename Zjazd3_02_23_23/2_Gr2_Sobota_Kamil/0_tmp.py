@@ -1,7 +1,7 @@
-x = lambda a: a + 10
-print(x(5))
+my_function = lambda a: a + 10
+print(my_function(5))
 
-def x(a):
+def my_function(a):
     return a + 10
 
 

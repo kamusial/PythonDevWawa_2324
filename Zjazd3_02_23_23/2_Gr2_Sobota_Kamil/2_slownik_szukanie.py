@@ -6,3 +6,6 @@ print(list(browser_speed.items()))
 
 print(list(browser_speed.keys())[list(browser_speed.values()).index(76)])
 
+title = str()
+book_id = int()
+book = list[title, book_id]
