@@ -14,11 +14,11 @@ def clear_text(text: str) -> str:
     text = text.lower()
     return text
 
-def reps_of_words(text: list) -> dict:
+def reps_of_words(text: list) -> list:
     reps = {}
     for word in text:
         if word in reps.keys():
             reps[word] += 1
         else:
             reps[word] = 1
-    return reps
+    return sorted(reps.items(), key=lambda x: x[1], reverse=True)
