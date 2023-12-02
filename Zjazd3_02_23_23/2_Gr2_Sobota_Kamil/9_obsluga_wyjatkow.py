@@ -12,6 +12,7 @@ def convert(data):
             print('Zostaje string')
             return data
 
+
 x = input('Podaj dane: ')
 x = convert(x)
 
