@@ -12,3 +12,16 @@ b = "pip! dwudziestu uzurpatorow dusi padalcem dwa pudle"
 import random
 
 # zad 6: wyprintuj 4 najczęściej występujące litery w zmiennej 'b' jako 4-literowe słowo
+from collections import Counter
+
+
+counter = Counter(b.replace(" ", ""))
+most_common = counter.most_common(4)
+
+result = ""
+for letter, _ in most_common:
+    result += letter
+print(result)
+
+result = "".join([letter for letter, _ in most_common])
+print(result)
