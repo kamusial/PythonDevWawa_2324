@@ -18,20 +18,23 @@ class Animal:
 
 
 class Crocodile(Animal):
+
+    def __init__(self, name):
+        super().__init__("crocodile", name)
+
     def eat(self):
         self._calories_left += 2000
+        super().eat()
 
     def dive(self):
         ...
 
 
-andrew = Crocodile("crocodile", "Ania")
+andrew = Crocodile("Ania")
 miau = Animal("cat", "Nyanko")
 print(Animal.amount_of_heads)
 # andrew._Animal__calories_left += 6000  # name mangling, tak nie robimy!! :<
 andrew.print_calories_left()
-
-
 
 andrew.eat()
 
