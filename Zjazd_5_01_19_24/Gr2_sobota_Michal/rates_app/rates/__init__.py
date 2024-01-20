@@ -1,1 +1,1 @@
-print("IMPLICIT STUFF")
+from .rate import get_rate
