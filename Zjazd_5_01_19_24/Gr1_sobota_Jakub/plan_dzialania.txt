@@ -1,7 +1,7 @@
 1. utworzenie nowej aplikacji - OK
 2. utworzyli widok ktory zwroci obiekt w postaci json - OK
 2a. sami utworzyli inny widok ktory zwroci inny obiekt w postaci json na innym URLu - OK
-3. edytujemy widok w sposob zeby pobieral dane z https://cat-fact.herokuapp.com/facts/
+3. edytujemy widok w sposob zeby pobieral dane z https://cat-fact.herokuapp.com/facts/ - OK
 4. wykonamy model klasy w bazie danych
 5. zapiszemy do bazy danych dane z https://cat-fact.herokuapp.com/facts/
 6. edytujemy widok, tak zeby dane pochodzily z bazy danych

@@ -22,3 +22,25 @@ def cats_from_api(request):
     response = requests.get("https://cat-fact.herokuapp.com/facts/")
     json_response = json.loads(response.text)
     return JsonResponse(json_response, safe=False)
+
+def cats_from_api2(request):
+    response = requests.get("https://cat-fact.herokuapp.com/facts/")
+    json_response = json.loads(response.text)
+
+    edited_response = list()
+    for i in (0, len(json_response) - 1):
+        data_object = json_response[i]
+        data = dict(
+            {
+                'user': data_object['user'],
+                'text': data_object['text'],
+                'source': data_object['source'],
+                'createdAt': data_object['createdAt'],
+                'updatedAt': data_object['updatedAt'],
+                'type': data_object['type'],
+                'deleted': data_object['deleted'],
+                'used': data_object['used']
+            }
+        )
+        edited_response.append(data)
+    return JsonResponse(edited_response, safe=False)
