@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from cats import views as cats_views
+
 urlpatterns = [
+    path('', cats_views.home_dict_based, name='home'),
+    path('cats/', cats_views.cats_from_api, name='cats_from_api'),
+    path('test/', cats_views.home_test, name='home_test'),
     path('admin/', admin.site.urls),
 ]
