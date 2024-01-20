@@ -1,0 +1,1 @@
+print("IMPLICIT STUFF")
