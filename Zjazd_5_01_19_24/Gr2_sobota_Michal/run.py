@@ -1,4 +1,4 @@
-from rates.rate import get_rate
+from rates_app.rates import get_rate
 
 
 print(get_rate("EUR"))
