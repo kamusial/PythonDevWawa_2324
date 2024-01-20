@@ -1,9 +1,17 @@
 """Jak dostać aktualny kurs danej waluty?!!!!!"""
 import httpx
-import json
+from typing import Literal
 
 
-response = httpx.get("https://api.nbp.pl/api/exchangerates/rates/a/usd/last")
-print(response.text)
-response_as_dict = json.loads(response.text)
-print(response_as_dict)
+CURRENCIES = Literal["EUR", "USD", "CHF"]
+
+
+def get_rate(currency: CURRENCIES) -> float:
+    response = httpx.get(f"https://api.nbp.pl/api/exchangerates/rates/a/{currency}/last")
+    response_as_dict = response.json()
+    return float(response_as_dict["rates"][0]["mid"])
+
+
+if __name__ == '__main__':
+    rate = get_rate("EUR")
+    print(rate)
