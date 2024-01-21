@@ -1,0 +1,19 @@
+Tworzenie wirtualnego środowiska uruchomieniowego pythona
+
+W folderze Zjazd_5_01_19_24/1_Gr1_niedziela_Jakub
+cd - przejscie do folderu , dir - listuje foldery
+
+python -m venv venv
+.\venv\Scripts\activate
+edytowalem requirements.txt , dodajac requests==2.31.0
+pip install -r requirements.txt
+pip install requests==2.31.0
+
+Sprawdzenie
+python
+import django
+import requests
+print(django.get_version())
+4.2
+
+Przejscie do folderu w ktorym znajduje sie plik manage.py (myapp)
