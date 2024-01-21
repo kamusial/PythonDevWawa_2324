@@ -1,0 +1,36 @@
+1. Request HTTP Pythonem
+import requests
+r = requests.get('https://www.example.com/')
+print(r.text)
+print(r.headers)
+
+2. __str__()
+class Human:
+    species = "Homo sapiens"
+    def __str__(self):
+        return self.species
+
+3. Cykl rozwiazywania wyboru widoku w Django
+1. HTTP Request -> myapp.settings i szuka ROOT_URLCONF
+2. w myapp.url istnieje lista urlpatterns
+3. lista urlpatterns moze zawierac listy urlpatterns z innych aplikacji w projekcie
+   odniesienie do takich list jest poprzez include('nazwa_aplikacji.urls')
+4. w Django istnieje proces ktory przeszukuje ta liste od poczatku do konca i wybiera pierwsze trafienie
+   pasujace do URL, w tym wypadku, do pierwszego argumentu funkcji path
+5. W przypadku trafienia, wybierany jest widok z drugiego argumentu path'a.
+   A w przypadku braku trafienia status 404.
+6. Mamy widok, widok moze zwrocic:
+   - konkretny status
+   - JsonResponse
+   - dokument, np. xml
+   - odpowiedz w formacie HTML
+7. Funkcja render pozwala na przekazanie slownika argumentów do przetworzenia
+   (podstawienia wartosci i wykonania logiki) po stronie HTML, zajmuje sie tym Jinja
+8. Zwracana jest odpowiedz w standardzie HTTP do uzytkownika
+
+Dodanie danych do bazy:
+- przez fixture: python manage.py loaddata catFacts.json
+- przez wykonanie logiki aplikacyjnej obiekt.save()
+- przez wywolanie metody save w shellu obiekt.save()
+
+
