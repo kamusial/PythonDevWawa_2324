@@ -1,0 +1,16 @@
+Mogą państwo,
+
+Utworzenie modelu, migracji, zapis danych przy pomocy mechnizmu
+https://fake-data.fly.dev/api/faker?num_rows=10
+
+Ustawienie domyślnych arkuszy stylu - bootstrapa
+https://getbootstrap.com/docs/4.3/getting-started/introduction/
+
+Spróbować zaawansowanych metod wyciągania danych z bazy danych:
+Model.objects.filter(pole__gte=20)
+Model.objects.filter(pole__gt=30, inne_pole_gt=20)
+
+F expression
+Model.objects.filter(pole_gt=F('inne_pole'))
+
+Q expressions

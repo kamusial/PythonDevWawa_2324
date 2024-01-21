@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.http import HttpResponse, JsonResponse, Http404
 import requests
 import datetime
 
@@ -53,6 +53,15 @@ def list_cats_view(request):
     cats = CatsFact.objects.all()
     return render(request, 'list.html', {'cats': cats, 'title': "This is cats list"})
 
+
 def detail_cats_view(request, pk):
-    cat = CatsFact.objects.get(id=pk)
+    cat = get_object_or_404(CatsFact, id=pk)
+    return render(request, 'detail.html', {'cat': cat, 'title': "This is cat view"})
+
+
+def detail_cats_view_with_redirect(request, pk):
+    try:
+        cat = get_object_or_404(CatsFact, id=pk)
+    except Http404:
+        return HttpResponseRedirect('/all_cats/')
     return render(request, 'detail.html', {'cat': cat, 'title': "This is cat view"})
