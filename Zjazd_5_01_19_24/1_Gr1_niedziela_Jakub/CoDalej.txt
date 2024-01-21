@@ -11,6 +11,5 @@ Model.objects.filter(pole__gte=20)
 Model.objects.filter(pole__gt=30, inne_pole_gt=20)
 
 F expression
+from django.db.models import F
 Model.objects.filter(pole_gt=F('inne_pole'))
-
-Q expressions
