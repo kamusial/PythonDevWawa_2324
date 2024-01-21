@@ -52,3 +52,7 @@ def xml_view(request):
 def list_cats_view(request):
     cats = CatsFact.objects.all()
     return render(request, 'list.html', {'cats': cats, 'title': "This is cats list"})
+
+def detail_cats_view(request, pk):
+    cat = CatsFact.objects.get(id=pk)
+    return render(request, 'detail.html', {'cat': cat, 'title': "This is cat view"})
