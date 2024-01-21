@@ -4,9 +4,11 @@ python manage.py test - startuje testy
 python manage.py check - sprawdza semantyke
 python manage.py makemigrations - tlumaczy strukture klas w plikach models.py na schematy tabel (i nie tylko)
 python manage.py migrate
+python manage.py sqlmigrate cats 0001
+python manage.py loaddata catFacts.json
 
 queries
 python manage.py shell
 from cats.models import CatsFact
-q = CatsFact.object.all()
+q = CatsFact.objects.all()
 q.query.__str__() - sprawdza zapytanie SQL które wyświetli się w bazie danych
