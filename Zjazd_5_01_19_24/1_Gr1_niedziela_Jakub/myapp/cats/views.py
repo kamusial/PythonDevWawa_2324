@@ -27,23 +27,13 @@ def cats_from_api(request):
     response = requests.get("https://cat-fact.herokuapp.com/facts/")
     json_response = response.json()
 
+    wanted_fields = ['user', 'text', 'source', 'createdAt', 'updatedAt', 'type', 'deleted', 'used']
     edited_response = list()
     for i in (0, len(json_response) - 1):
         data_object = json_response[i]
-        fields = dict(
-            {
-                'fact_owner': data_object['user'],
-                'text': data_object['text'],
-                'source': data_object['source'],
-                'createdAt': data_object['createdAt'],
-                'updatedAt': data_object['updatedAt'],
-                'type': data_object['type'],
-                'deleted': data_object['deleted'],
-                'used': data_object['used']
-            }
-        )
-        q = CatsFact.objects.all()
-        if(len(q) < 10):
+        fields = {key: data_object[key] for key in data_object if key in wanted_fields}
+        fields['fact_owner'] = fields.pop('user')
+        if CatsFact.objects.count() < 10:
             new_object = CatsFact(**fields)
             new_object.save()
         edited_response.append(fields)

@@ -1,0 +1,5 @@
+1. edytowali myapp.urls.py zeby dodac obsluge url'a /time z widokiem na funkcje time_now
+2. w cats.views.py prosze napisac funkcje(request) o nazwie time_now
+import datetime
+datetime.datetime.now()
+time_now powinna zwrocic obecny czas w formie JSONResponse {'time': czas}
