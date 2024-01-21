@@ -1,11 +1,14 @@
-python manage.py runserver - start servera aplikacji
-python manage.py shell - wejscie do shella django (ekwiwalent komendy python)
-python manage.py test - startuje testy
-python manage.py check - sprawdza semantyke
-python manage.py makemigrations - tlumaczy strukture klas w plikach models.py na schematy tabel (i nie tylko)
-python manage.py migrate
-python manage.py sqlmigrate cats 0001
-python manage.py loaddata catFacts.json
+python manage.py runserver                                  - start servera aplikacji
+python manage.py shell                                      - wejscie do shella django (ekwiwalent komendy python)
+python manage.py test                                       - startuje testy
+python manage.py check                                      - sprawdza semantyke
+python manage.py makemigrations                             - tlumaczy strukture klas w plikach models.py na schematy tabel (i nie tylko)
+python manage.py migrate                                    - aplikuje migracje na bazie danych
+python manage.py sqlmigrate cats 0001                       - podglad kodu SQL migracji
+python manage.py loaddata catFacts.json                     - zaladowanie danych fixture
+python manage.py loaddata cats/fixtures/catFacts.json       - zaladowanie danych fixture
+python manage.py loaddata --app cats catFacts.json          - zaladowanie danych fixture
+
 
 queries
 python manage.py shell

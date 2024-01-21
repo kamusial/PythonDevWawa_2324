@@ -25,3 +25,6 @@ class CatsFact(models.Model):
     type = models.CharField(max_length=255)
     deleted = models.BooleanField()
     used = models.BooleanField()
+
+    def __str__(self):
+        return self.text[:15] + '...'
