@@ -1,3 +1,6 @@
+django-admin startproject myapp                             - start projektu
+django-admin startapp cats                                  - utworzenie kolejnej aplikacji
+
 python manage.py runserver                                  - start servera aplikacji
 python manage.py shell                                      - wejscie do shella django (ekwiwalent komendy python)
 python manage.py test                                       - startuje testy
