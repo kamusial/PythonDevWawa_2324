@@ -1,3 +1,6 @@
+{% extends 'home.html' %}
+
+{% block content %}
 {{ title }}<br>
 {{ cat }}<br>
 {{ cat.fact_owner }}<br>
@@ -6,3 +9,4 @@
 <br>
 <a href="{% url 'list_cats_view' %}">Powrót</a><br>
 <a href="{% url 'detail_cats_view_with_redirect' 1 %}">Przejdź do pierwszego obiektu</a>
+{% endblock %}

@@ -1,3 +1,6 @@
+{% extends 'home.html' %}
+
+{% block content %}
 {{ title }}<br>
 
 {% for cat in cats %}
@@ -5,3 +8,4 @@
     {{ cat.text }}<br>
     {{ cat.createdAt }}<br>
 {% endfor %}
+{% endblock %}
