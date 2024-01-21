@@ -22,7 +22,7 @@ from cats import views as cats_views
 urlpatterns = [
     path('', cats_views.home_dict_based, name='home'),
     path('cats/', cats_views.cats_from_api, name='cats_from_api'),
-    path('all_cats/', cats_views.list_cats_view, name='list_cats_view'),
+    path('cats/list/', cats_views.list_cats_view, name='list_cats_view'),
     path('cats/<int:pk>/', cats_views.detail_cats_view_with_redirect, name='detail_cats_view_with_redirect'),
     path('xml/', cats_views.xml_view, name='xml_view'),
     path('time/', cats_views.time_now, name='time_now'),

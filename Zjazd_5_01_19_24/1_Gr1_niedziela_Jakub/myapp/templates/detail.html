@@ -3,3 +3,6 @@
 {{ cat.fact_owner }}<br>
 {{ cat.text }}<br>
 {{ cat.createdAt }}<br>
+<br>
+<a href="{% url 'list_cats_view' %}">Powrót</a><br>
+<a href="{% url 'detail_cats_view_with_redirect' 1 %}">Przejdź do pierwszego obiektu</a>

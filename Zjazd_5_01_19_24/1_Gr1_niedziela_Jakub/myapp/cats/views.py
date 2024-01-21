@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.http import HttpResponse, JsonResponse, Http404
 import requests
 import datetime
@@ -59,9 +59,11 @@ def detail_cats_view(request, pk):
     return render(request, 'detail.html', {'cat': cat, 'title': "This is cat view"})
 
 
+#from django.shortcuts import redirect
+#from django.http import Http404
 def detail_cats_view_with_redirect(request, pk):
     try:
         cat = get_object_or_404(CatsFact, id=pk)
     except Http404:
-        return HttpResponseRedirect('/all_cats/')
+        return redirect('list_cats_view')
     return render(request, 'detail.html', {'cat': cat, 'title': "This is cat view"})

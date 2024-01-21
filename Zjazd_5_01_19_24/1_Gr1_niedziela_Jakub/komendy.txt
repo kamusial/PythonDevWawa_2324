@@ -11,6 +11,8 @@ python manage.py sqlmigrate cats 0001                       - podglad kodu SQL m
 python manage.py loaddata catFacts.json                     - zaladowanie danych fixture
 python manage.py loaddata cats/fixtures/catFacts.json       - zaladowanie danych fixture
 python manage.py loaddata --app cats catFacts.json          - zaladowanie danych fixture
+python manage.py createsuperuser                            - tworzy administratora strony
+u:admin p:admin
 
 
 queries
