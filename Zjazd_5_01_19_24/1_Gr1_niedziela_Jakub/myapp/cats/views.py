@@ -47,3 +47,8 @@ def time_now(request):
 
 def xml_view(request):
     return render(request, 'cats/data.xml', content_type='text/xml')
+
+
+def list_cats_view(request):
+    cats = CatsFact.objects.all()
+    return render(request, 'list.html', {'cats': cats, 'title': "This is cats list"})
