@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 import requests
 
 # Create your views here.
+from .models import CatsFact
 
 
 def home_string_based(request):
@@ -31,7 +32,7 @@ def cats_from_api(request):
         data_object = json_response[i]
         fields = dict(
             {
-                'user': data_object['user'],
+                'fact_owner': data_object['user'],
                 'text': data_object['text'],
                 'source': data_object['source'],
                 'createdAt': data_object['createdAt'],
@@ -41,6 +42,10 @@ def cats_from_api(request):
                 'used': data_object['used']
             }
         )
+        q = CatsFact.objects.all()
+        if(len(q) < 10):
+            new_object = CatsFact(**fields)
+            new_object.save()
         edited_response.append(fields)
     return JsonResponse(edited_response, safe=False)
 
