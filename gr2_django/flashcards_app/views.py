@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.utils.text import slugify
+
 from .models import Flashcard
 
 
@@ -15,3 +17,11 @@ def flashcards_list(request):
                   "flashcards-list.html",
                   context={
                       "flashcards": flashcards})
+
+
+def learn_flashcard(request, slug):
+    flashcard = get_object_or_404(Flashcard, slug=slug)
+    context = {"flashcard": flashcard}
+    return render(request,
+                  "learn-flashcard.html",
+                  context=context)
