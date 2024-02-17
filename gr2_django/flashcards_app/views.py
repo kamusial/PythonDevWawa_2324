@@ -18,13 +18,10 @@ def flashcards_list(request):
 
 def learn_flashcard(request, slug):
     flashcard = get_object_or_404(Flashcard, slug=slug)
-    all_flashcards = Flashcard.objects.all()
-    all_flashcards_ids = [flashcard.pk for flashcard in all_flashcards]
-    current_index = all_flashcards_ids.index(flashcard.pk)
-    if current_index + 1 == len(all_flashcards):
-        next_flashcard = all_flashcards[0]
+    next_flashcards = Flashcard.objects.filter(pk__gt=flashcard.pk)
+    if next_flashcards.exists():
+        next_flashcard = next_flashcards.first()
     else:
-        next_flashcard = all_flashcards[current_index + 1]
-
+        next_flashcard = Flashcard.objects.all().first()
     context = {"flashcard": flashcard, "next_flashcard_url": next_flashcard.learn_url}
     return render(request, "learn-flashcard.html", context=context)
