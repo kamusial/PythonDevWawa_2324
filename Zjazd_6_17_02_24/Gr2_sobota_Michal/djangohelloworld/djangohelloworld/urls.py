@@ -1,5 +1,5 @@
 """
-URL configuration for project_flashcards project.
+URL configuration for djangohelloworld project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -15,9 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.http import HttpResponse
+from django.urls import path
+
+
+def hello_view(_):
+    return HttpResponse(content=b"Guten Morgen Welt")
+
 
 urlpatterns = [
-    path('', include("flashcards_app.urls")),
+    path('', hello_view),
     path('admin/', admin.site.urls),
 ]
