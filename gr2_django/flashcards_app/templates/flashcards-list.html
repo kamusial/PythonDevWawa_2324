@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main class="text-center">
+        <h1>Your flashcards</h1>
+        <hr>
+        <section>
+            <ul>
+                {% for flashcard in flashcards %}
+                <li>
+                    <div class="card text-white bg-info bg-gradient">
+                        <a class="card-title m-1">{{ flashcard.name }}</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+{% endblock %}
