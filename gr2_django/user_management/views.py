@@ -1,3 +1,7 @@
+from typing import Optional
+
+from django.contrib import auth
+from django.contrib.auth.models import User
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 
@@ -18,5 +22,23 @@ def register(request: HttpRequest) -> HttpResponse:
 
 
 def login(request: HttpRequest) -> HttpResponse:
-    context = {"form": LoginForm()}
+    form = LoginForm()
+    if request.method == "POST":
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user: Optional[User] = auth.authenticate(request, username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return redirect("flashcards-collection")
+    context = {
+        "form": form
+    }
     return render(request, "user_management/login.html", context=context)
+
+
+def user_session(request):
+    """ context_processor - czyli context dodawany globalnie do każdego widoku """
+    user = auth.get_user(request)
+    return {"user": user}

@@ -1,8 +1,9 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django import forms
+from django.forms import PasswordInput
 
 
 class CreateUserForm(UserCreationForm):
@@ -19,6 +20,7 @@ class CreateUserForm(UserCreationForm):
                    css_class="rounded-pill mt-4")
         )
 
+    # Jeśli zaimplementowalibyśmy pole email jako unique, ta walidacja nie byłaby potrzebna.
     def clean_email(self):
         email = self.cleaned_data.get("email")
         if User.objects.filter(email=email).exists():
@@ -27,5 +29,14 @@ class CreateUserForm(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(max_length=200)
-    password = forms.CharField(widget=forms.PasswordInput())
+    # username = forms.CharField()
+    # password = forms.CharField(widget=PasswordInput())
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.add_input(
+            Submit("login-submit",
+                   "Login",
+                   css_class="rounded-pill mt-4")
+        )

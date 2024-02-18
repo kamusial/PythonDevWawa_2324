@@ -1,10 +1,13 @@
 {% extends "./base.html" %}
-
 {% block content %}
     <main class="text-center">
-        <h1>Welcome to the flashcards app!</h1>
-        <hr>
-        <i class="fa-solid fa-graduation-cap fa-5x"></i>
-        <h2>Please log in to explore the wonderful world of flashcards :)</h2>
+        {% if request.user.is_authenticated %}
+            <h1>placeholder for logged in user</h1>
+        {% else %}
+            <h1>Welcome to the flashcards app!</h1>
+            <hr>
+            <i class="fa-solid fa-graduation-cap fa-5x"></i>
+            <h2>Please log in to explore the wonderful world of flashcards :)</h2>
+        {% endif %}
     </main>
 {% endblock %}

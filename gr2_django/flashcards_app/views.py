@@ -1,10 +1,11 @@
+from django.http import HttpRequest
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import NewFlashcardForm
 from .models import Flashcard
 
 
-def hello_view(request):
+def hello_view(request: HttpRequest):
     return render(request, "flashcards_app/hello.html")
 
 

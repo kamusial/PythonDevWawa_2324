@@ -14,7 +14,7 @@
                                   method="POST">
                                 <input type="hidden" name="slug" value="{{ flashcard.slug }}">
                                 <i class="fa-solid fa-xmark"
-                                   style="color: red;"
+                                   style="color: red"
                                    type="button"
                                    onclick="document.getElementById('delete {{ flashcard.slug }}').submit()"></i>
                                 {% csrf_token %}
