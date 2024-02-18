@@ -26,21 +26,30 @@
     <header class="navbar navbar-expand-lg p-0 bg-success bg-gradient shadow-sm">
         <a class="navbar-brand text-white m-3" href="/">Flashcards</a>
         <div class="collapse navbar-collapse m-3">
+            {% if request.user.is_active %}
             <a type="button" href="{% url 'flashcards-collection' %}">
                 <li class="btn bg-primary bg-gradient text-white m-0 mx-2">My Collection</li>
             </a>
             <a type="button" href="{% url 'add-flashcard' %}">
                 <li class="btn bg-primary bg-gradient text-white my-0 mx-2">New Flashcard</li>
             </a>
+            {% endif %}
         </div>
         <div>
             <ul>
-                <a type="button" href="{% url 'register' %}">
-                    <li class="btn bg-primary bg-gradient text-white m-2">Register</li>
-                </a>
-                <a type="button" href="{% url 'login' %}">
-                    <li class="btn bg-primary bg-gradient text-white m-2">Login</li>
-                </a>
+                {% if request.user.is_active %}
+                    <a>Hello, {{ request.user.username }}</a>
+                    <a type="button" href="{% url 'logout' %}">
+                        <li class="btn bg-primary bg-gradient text-white m-2">Logout</li>
+                    </a>
+                {% else %}
+                    <a type="button" href="{% url 'register' %}">
+                        <li class="btn bg-primary bg-gradient text-white m-2">Register</li>
+                    </a>
+                    <a type="button" href="{% url 'login' %}">
+                        <li class="btn bg-primary bg-gradient text-white m-2">Login</li>
+                    </a>
+                {% endif %}
             </ul>
         </div>
     </header>

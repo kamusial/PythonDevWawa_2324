@@ -1,8 +1,18 @@
 {% extends "./base.html" %}
 {% block content %}
     <main class="text-center">
+        {% if request.GET.logout %}<h4 class="text-success text-center">Logged out successfully.</h4>{% endif %}
         {% if request.user.is_authenticated %}
-            <h1>placeholder for logged in user</h1>
+            <h2>Go and explore your collection now, {{ request.user.username }} :)</h2>
+            <br>
+            <div>
+                <a class="btn btn-alert navbar-btn btn-lg bg-primary bg-gradient text-white m-1"
+                   type="button"
+                   href="{% url 'learn' %}">Learn</a>
+                <a class="btn btn-alert navbar-btn btn-lg bg-primary bg-gradient text-white m-1"
+                   type="button"
+                   href="{% url 'flashcards-collection' %}">My Collection</a>
+            </div>
         {% else %}
             <h1>Welcome to the flashcards app!</h1>
             <hr>
