@@ -1,0 +1,12 @@
+{% load crispy_forms_tags %}
+
+{% crispy form %}
+
+
+
+
+
+{% if first_name %}
+<h1>Servus {{ first_name }}!</h1>
+<h1>Seriously, your surname is {{ last_name }}?! XDDDDD</h1>
+{% endif %}

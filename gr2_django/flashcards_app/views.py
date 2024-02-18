@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.utils.text import slugify
+from .forms import NewFlashcardForm
 
 from .models import Flashcard
 
@@ -25,3 +25,8 @@ def learn_flashcard(request, slug):
         next_flashcard = Flashcard.objects.all().first()
     context = {"flashcard": flashcard, "next_flashcard_url": next_flashcard.learn_url}
     return render(request, "learn-flashcard.html", context=context)
+
+
+def add_flashcard(request):
+
+    return render(request, "add-flashcard.html", context={"formularz_do_dodania_fiszki": NewFlashcardForm()})

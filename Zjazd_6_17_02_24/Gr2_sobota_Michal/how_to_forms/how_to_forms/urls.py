@@ -17,10 +17,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from form_exercise.views import form1, form2
+from form_exercise.views import form1, form2, form3
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("form1", form1),
-    path("form2", form2)
+    path("form2", form2),
+    path("form3", form3)
 ]

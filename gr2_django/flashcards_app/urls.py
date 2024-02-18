@@ -1,9 +1,10 @@
 from django.urls import path
 
-from .views import hello_view, flashcards_list, learn_flashcard
+from . import views
 
 urlpatterns = [
-    path('', hello_view),
-    path('flashcards', flashcards_list, name="flashcards-collection"),
-    path('flashcards/learn/<slug:slug>', learn_flashcard, name="learn-flashcard")
+    path('', views.hello_view),
+    path('flashcards', views.flashcards_list, name="flashcards-collection"),
+    path('flashcards/learn/<slug:slug>', views.learn_flashcard, name="learn-flashcard"),
+    path('flashcards/add', views.add_flashcard, name="add-flashcard"),
 ]
