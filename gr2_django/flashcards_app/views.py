@@ -5,7 +5,7 @@ from .models import Flashcard
 
 
 def hello_view(request):
-    return render(request, "flashcards_app/register.html")
+    return render(request, "flashcards_app/hello.html")
 
 
 def flashcards_list(request):
