@@ -5,7 +5,7 @@ from .models import Flashcard
 
 
 def hello_view(request):
-    return render(request, "hello.html")
+    return render(request, "flashcards_app/register.html")
 
 
 def flashcards_list(request):
@@ -17,7 +17,7 @@ def flashcards_list(request):
         flashcard_to_delete: Flashcard = Flashcard.objects.filter(slug=slug)
         flashcard_to_delete.delete()
     flashcards: list[Flashcard] = Flashcard.objects.all()
-    return render(request, "flashcards-list.html", context={"flashcards": flashcards})
+    return render(request, "flashcards_app/flashcards-list.html", context={"flashcards": flashcards})
 
 
 def learn_flashcard(request, slug):
@@ -28,7 +28,7 @@ def learn_flashcard(request, slug):
     else:
         next_flashcard = Flashcard.objects.all().first()
     context = {"flashcard": flashcard, "next_flashcard_url": next_flashcard.learn_url}
-    return render(request, "learn-flashcard.html", context=context)
+    return render(request, "flashcards_app/learn-flashcard.html", context=context)
 
 
 def add_flashcard(request):
@@ -38,4 +38,4 @@ def add_flashcard(request):
             new_flashcard = Flashcard(**filled_form.cleaned_data)
             new_flashcard.save()
             return redirect("flashcards-collection")
-    return render(request, "add-flashcard.html", context={"formularz_do_dodania_fiszki": NewFlashcardForm()})
+    return render(request, "flashcards_app/add-flashcard.html", context={"formularz_do_dodania_fiszki": NewFlashcardForm()})
