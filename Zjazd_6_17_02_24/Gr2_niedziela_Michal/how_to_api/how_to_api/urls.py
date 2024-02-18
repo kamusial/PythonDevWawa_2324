@@ -1,5 +1,5 @@
 """
-URL configuration for how_to_forms project.
+URL configuration for how_to_api project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -17,11 +17,9 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from form_exercise.views import form1, form2, form3, api_view
+from .views import api_test_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("form1", form1),
-    path("form2", form2),
-    path("form3", form3)
+    path("", api_test_view)
 ]

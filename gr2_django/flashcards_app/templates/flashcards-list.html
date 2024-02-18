@@ -9,6 +9,16 @@
                     <li>
                         <div class="card text-white bg-info bg-gradient">
                             <a class="card-title m-1" href="{{ flashcard.learn_url }}">{{ flashcard.name }}</a>
+                            <form id="delete {{ flashcard.slug }}"
+                                  class="btn btn-alert navbar-btn bg-primary"
+                                  method="POST">
+                                <input type="hidden" name="slug" value="{{ flashcard.slug }}">
+                                <i class="fa-solid fa-xmark"
+                                   style="color: red;"
+                                   type="button"
+                                   onclick="document.getElementById('delete {{ flashcard.slug }}').submit()"></i>
+                                {% csrf_token %}
+                            </form>
                         </div>
                     </li>
                 {% endfor %}
