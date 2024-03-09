@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
 
-df = pd.read_csv('weight-height.csv')
+df = pd.read_csv('weight-height.csv', delimiter=';')
 print(df)
 print(type(df))
 
