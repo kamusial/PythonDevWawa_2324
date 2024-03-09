@@ -23,7 +23,7 @@ plt.show()
 q1 = df.describe().T.loc['price', '25%']
 q3 = df.describe().T.loc['price', '75%']
 
-df1 = df[(df.price >= q1) & (df.price <= q3)]
+df1 = df[(df.price >= 0) & (df.price <= q3)]
 
 sns.histplot(df1.price)
 plt.show()
@@ -36,3 +36,4 @@ model = LinearRegression()
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 
+print(pd.DataFrame(model.coef_, X.columns))
