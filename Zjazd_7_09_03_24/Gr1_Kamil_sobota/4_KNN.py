@@ -31,6 +31,14 @@ plt.show()
 # obliczenie dystansu poniędzy próbka, a danymi
 df['distance'] = (df.sepallength-sample[0])**2 + (df.sepalwidth-sample[1])**2 +\
                  (df.petallength-sample[2])**2 + (df.petalwidth-sample[3])**2
-
-
 print(df.sort_values('distance').to_string())
+
+print('Teraz gotowy klasyfikator')
+print('\nKNN')
+X = df.iloc[:, 2:4]   # 4 pierwsze kolumny
+y = df.class_value
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+model = KNeighborsClassifier(n_neighbors=5, weights='distance')
+model.fit(X_train, y_train)
+print(model.score(X_test, y_test))
+print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
