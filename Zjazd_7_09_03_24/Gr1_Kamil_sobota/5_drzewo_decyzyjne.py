@@ -17,7 +17,7 @@ df['class_value'] = df['class'].map(species)
 
 print('Teraz gotowy klasyfikator')
 print('\nTree')
-X = df.iloc[:, :2]   # 4 pierwsze kolumny
+X = df.iloc[:, 2:4]   # 4 pierwsze kolumny
 y = df.class_value
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
@@ -26,7 +26,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 # min_samples_split int or float, default=2
 # max_features int, float or {“sqrt”, “log2”}, default=None
 
-model = DecisionTreeClassifier(criterion='entropy', max_depth=20, min_samples_split=2)
+model = DecisionTreeClassifier(criterion='gini', max_depth=6, min_samples_split=2)
+model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
 print(pd.DataFrame(model.feature_importances_, X.columns))
