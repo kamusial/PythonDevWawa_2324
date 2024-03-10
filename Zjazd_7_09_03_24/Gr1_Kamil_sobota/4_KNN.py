@@ -35,10 +35,20 @@ print(df.sort_values('distance').to_string())
 
 print('Teraz gotowy klasyfikator')
 print('\nKNN')
-X = df.iloc[:, 2:4]   # 4 pierwsze kolumny
+X = df.iloc[:, :4]   # 4 pierwsze kolumny
 y = df.class_value
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 model = KNeighborsClassifier(n_neighbors=5, weights='distance')
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
+
+# jak liczba sąsiadow wpływa na jakosc rozwiązania
+results = []
+for k in range(1, 101):
+    model = KNeighborsClassifier(n_neighbors=k, weights='distance')
+    model.fit(X_train, y_train)
+    results.append(model.score(X_test, y_test))
+
+plt.plot(results)
+plt.show()
