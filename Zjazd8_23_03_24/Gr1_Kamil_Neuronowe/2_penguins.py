@@ -19,14 +19,15 @@ from tensorflow import keras
 
 X_train, X_test, y_train, y_test = train_test_split(penguins_features, target, test_size=0.2)
 inputs = keras.Input([4])
-hidden_layer1 = keras.layers.Dense(5, activation='relu')(inputs)
-hidden_layer2 = keras.layers.Dense(5, activation='relu')(hidden_layer1)
-output_layer = keras.layers.Dense(3, activation='softmax')(hidden_layer2)
+hidden_layer1 = keras.layers.Dense(20, activation='linear')(inputs)
+hidden_layer2 = keras.layers.Dense(20, activation='linear')(hidden_layer1)
+hidden_layer3 = keras.layers.Dense(20, activation='linear')(hidden_layer2)
+output_layer = keras.layers.Dense(3, activation='softmax')(hidden_layer3)
 
 model = keras.Model(inputs=inputs, outputs=output_layer)
 
 model.compile(optimizer='adam', loss=keras.losses.CategoricalCrossentropy())
-history = model.fit(X_train, y_train, epochs=100, verbose=2)
+history = model.fit(X_train, y_train, epochs=1000, verbose=2)
 sns.lineplot(x=history.epoch, y=history.history['loss'])
 plt.show()
 
