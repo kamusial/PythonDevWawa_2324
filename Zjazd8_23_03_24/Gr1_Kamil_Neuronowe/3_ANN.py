@@ -25,12 +25,16 @@ print(X.describe())
 
 
 ### wersja 1 ###
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-# model = MLPClassifier(hidden_layer_sizes=(100, 100, 100), max_iter=10000, activation='relu')
-# model.fit(X_train, y_train)
-# y_pred = model.predict(X_test)
-# print(confusion_matrix(y_test, y_pred))
-# print(accuracy_score(y_test, y_pred))
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+model = MLPClassifier(hidden_layer_sizes=(100, 100, 100), max_iter=10000, activation='relu')
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+print(confusion_matrix(y_test, y_pred))
+print(accuracy_score(y_test, y_pred))
+
+import joblib
+joblib.dump(model, 'My_model1.model')
+downloaded_model = joblib.load('My_model1.model')
 
 ### wersja 2 ###
 # score = []
