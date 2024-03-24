@@ -12,9 +12,9 @@ class MyGui:
 
         self.menubar = tk.Menu(self.root)
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
-        self.filemenu.add_command(label='zrob cos')
+        self.filemenu.add_command(label='zrob cos', command=exit)
         self.filemenu.add_separator()
-        self.filemenu.add_command(label='zamknij')
+        self.filemenu.add_command(label='zamknij', command=self.zamknij)
 
         self.filemenu2 = tk.Menu(self.menubar)
         self.filemenu2.add_command(label='opcja1')
