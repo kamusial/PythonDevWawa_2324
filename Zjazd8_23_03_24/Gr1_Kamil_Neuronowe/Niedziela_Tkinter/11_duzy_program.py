@@ -10,6 +10,21 @@ class MyGui:
         self.root.attributes('-topmost', 1)
         self.root.config(background='Light Blue')
 
+        self.menubar = tk.Menu(self.root)
+        self.filemenu = tk.Menu(self.menubar, tearoff=0)
+        self.filemenu.add_command(label='zrob cos')
+        self.filemenu.add_separator()
+        self.filemenu.add_command(label='zamknij')
+
+        self.filemenu2 = tk.Menu(self.menubar)
+        self.filemenu2.add_command(label='opcja1')
+        self.filemenu2.add_command(label='opcja2')
+
+        self.menubar.add_cascade(menu=self.filemenu, label='File')
+        self.menubar.add_cascade(menu=self.filemenu2, label='opcje')
+
+        self.root.config(menu=self.menubar)
+
         self.label = tk.Label(self.root, text='moj text')
         self.label.config(
             background='#555',
