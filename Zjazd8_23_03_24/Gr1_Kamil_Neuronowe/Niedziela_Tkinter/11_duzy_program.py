@@ -23,6 +23,16 @@ class MyGui:
         self.textbox.bind('<KeyPress>', self.short)
         self.textbox.pack(padx=10, pady=10)
 
+        self.check_state = tk.IntVar()
+        self.check = tk.Checkbutton(self.root, text='show', font=('Arial', 15), variable=self.check_state)
+        self.check.pack(padx=10, pady=10)
+
+        self.button = tk.Button(self.root, text='Show Message', font=('Arial', 16), command=self.show_message)
+        self.button.pack(padx=10, pady=10)
+
+        self.clearbtn = tk.Button(self.root, text='Clear', font=('Arial', 16), command=self.clear)
+        self.clearbtn.pack()
+
         self.root.mainloop()
     def short(self, event):
         print(f'event: {event}')
@@ -36,5 +46,6 @@ class MyGui:
         print('Wywolana funkcja show message')
         messagebox.showinfo(title='Message', message='wiadomosc')
 
-
+    def clear(self):
+        self.textbox.delete('1.0', tk.END)
 MyGui()
