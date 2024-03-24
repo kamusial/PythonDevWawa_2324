@@ -33,6 +33,8 @@ class MyGui:
         self.clearbtn = tk.Button(self.root, text='Clear', font=('Arial', 16), command=self.clear)
         self.clearbtn.pack()
 
+        self.root.protocol('WM_DELETE_WINDOW', self.zamknij)
+
         self.root.mainloop()
     def short(self, event):
         print(f'event: {event}')
@@ -43,9 +45,17 @@ class MyGui:
             self.show_message()
 
     def show_message(self):
-        print('Wywolana funkcja show message')
-        messagebox.showinfo(title='Message', message='wiadomosc')
+        print(self.check_state.get())
+        if self.check_state.get() == 0:
+            print(self.textbox.get('1.0', tk.END))
+        else:
+            messagebox.showinfo(title='Message', message=self.textbox.get('1.0', tk.END))
 
     def clear(self):
         self.textbox.delete('1.0', tk.END)
+
+    def zamknij(self):
+        print('Zamknij')
+        if messagebox.askyesno(title='wyjsc?', message='czy napewno chcesz wyjsc?'):
+            self.root.destroy()
 MyGui()
