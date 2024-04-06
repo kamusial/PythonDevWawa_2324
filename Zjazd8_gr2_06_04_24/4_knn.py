@@ -33,7 +33,7 @@ print('Klasyfikator')
 X = df.iloc[:, :4]   # 4 pierwsze kolumny
 y = df.class_value
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-model = KNeighborsClassifier()
+model = KNeighborsClassifier(n_neighbors=5, weights='uniform')  #distance
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
