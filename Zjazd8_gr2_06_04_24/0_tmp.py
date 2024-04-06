@@ -26,3 +26,7 @@ df = pd.get_dummies(df)
 del (df['Gender_Male'])
 df = df.rename(columns={'Gender_Female': 'Gender'})
 print(df.head())
+# False - facet,  True - kobieta
+
+model = LinearRegression()
+model.fit(df[['Height', 'Gender']]    ,   df['Weight'])    #dane wejściowe i wyjściowe
