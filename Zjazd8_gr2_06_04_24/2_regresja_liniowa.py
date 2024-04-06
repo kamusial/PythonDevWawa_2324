@@ -21,7 +21,7 @@ q3 = df.describe().T.loc['price', '75%']
 print(f'cena na koncu q1 to: {q1}')
 print(f'cena na koncu q3 to: {q3}')
 
-df1 = df[(df.price >= q1) & (df.price <= q3)]
+df1 = df[(df.price >= 0) & (df.price <= q3)]
 sns.histplot(df1.price)
 plt.show()
 
@@ -32,3 +32,5 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 model = LinearRegression()
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
+
+print(pd.DataFrame(model.coef_, X.columns))
