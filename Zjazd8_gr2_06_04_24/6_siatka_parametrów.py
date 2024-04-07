@@ -20,3 +20,20 @@ print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
 print(pd.DataFrame(model.feature_importances_, X.columns))
 
+print('Siatka parametrów')
+model = DecisionTreeClassifier()
+params = {
+    'max_depth': [3, 5, 7],
+    'min_samples_split': [2, 5],
+    'criterion': ['gini', 'entropy', 'log_loss']
+}
+grid = GridSearchCV(model, params, cv=2, verbose=2)
+grid.fit(X_train, y_train)
+print(f'parametry: {grid.best_params_}')
+print(f'wynik: {grid.best_score_}')
+
+#zapis i odczyt modelu
+# import joblib
+# joblib.dump(grid, 'Kamil_model1.model')
+# model_new = joblib.load('Kamil_model1.model')
+

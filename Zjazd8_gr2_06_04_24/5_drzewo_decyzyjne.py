@@ -22,6 +22,7 @@ model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
 print(pd.DataFrame(model.feature_importances_, X.columns))
+# print(model.predict([[2, 3, 4, 5]]))
 
 # # granice decyzyjne
 # from mlxtend.plotting import plot_decision_regions
