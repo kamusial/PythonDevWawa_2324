@@ -8,7 +8,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 
-X, y = make_circles(n_samples=5000, factor=0.4, noise=0.2)
+X, y = make_circles(n_samples=500, factor=0.4, noise=0.4)
 print(X)
 print(y)
 plt.scatter(X[:, 0], X[:, 1], c=y)
@@ -26,19 +26,24 @@ print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
 
 print('\nKNN')
-model = KNeighborsClassifier(n_neighbors=50, weights='distance')
+model = KNeighborsClassifier(n_neighbors=5) #, weights='distance')
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
 
 print('\nDrzewo decyzyjne')
-model = DecisionTreeClassifier(max_depth=3, min_samples_split=5)
-model.fit(X_train, y_train)
-print(model.score(X_test, y_test))
-print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
+model1 = DecisionTreeClassifier(max_depth=30, min_samples_split=2)
+model1.fit(X_train, y_train)
+print(model1.score(X_test, y_test))
+print(pd.DataFrame(confusion_matrix(y_test, model1.predict(X_test))))
 
 print('\nSVC')
 model = SVC()
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
+
+# # granice decyzyjne
+from mlxtend.plotting import plot_decision_regions
+plot_decision_regions(X, y, model1)
+plt.show()
