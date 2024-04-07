@@ -31,7 +31,7 @@ params = {
     'criterion': ['gini', 'entropy', 'log_loss'],
     'max_features': range(3, X_train.shape[1]+1, 2)
 }
-grid = GridSearchCV(model, params, cv=5, verbose=1)
+grid = GridSearchCV(model, params, cv=5, verbose=2)
 grid.fit(X_train, y_train)
 print(f'parametry: {grid.best_params_}')
 print(f'wynik: {grid.best_score_}')
