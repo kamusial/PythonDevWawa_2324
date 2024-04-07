@@ -23,17 +23,19 @@ print(pd.DataFrame(model.feature_importances_, X.columns))
 print('Siatka parametrów')
 model = DecisionTreeClassifier()
 params = {
-    'max_depth': [3, 5, 7],
-    'min_samples_split': [2, 5],
-    'criterion': ['gini', 'entropy', 'log_loss']
+    'max_depth': range(2, 4),
+    'min_samples_split': range(2, 4),
+    'criterion': ['gini', 'entropy', 'log_loss'],
+    'max_features': range(3, X_train.shape[1]+1, 2)
 }
-grid = GridSearchCV(model, params, cv=2, verbose=2)
+grid = GridSearchCV(model, params, cv=5, verbose=1)
 grid.fit(X_train, y_train)
 print(f'parametry: {grid.best_params_}')
 print(f'wynik: {grid.best_score_}')
 
-#zapis i odczyt modelu
-# import joblib
-# joblib.dump(grid, 'Kamil_model1.model')
-# model_new = joblib.load('Kamil_model1.model')
+# zapis i odczyt modelu
+import joblib
+joblib.dump(grid, 'Kamil_model1.model')
+model_new = joblib.load('Kamil_model1.model')
 
+# print(f'max depth {model_new.best_params_["max_depth"]}')
