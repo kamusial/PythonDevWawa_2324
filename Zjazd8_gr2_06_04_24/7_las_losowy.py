@@ -19,3 +19,9 @@ X2 = df[['petallength', 'petalwidth']]
 X = df.iloc[:,:4]  # wszystkie cechy
 y = df.class_value
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.2)
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+print(model.score(X_test, y_test))
+print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
+print(pd.DataFrame(model.feature_importances_, X.columns))

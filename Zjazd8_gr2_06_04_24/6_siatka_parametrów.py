@@ -6,6 +6,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestClassifier
+
 
 df = pd.read_csv('heart.csv', comment='#')
 print(df.head().to_string())
@@ -21,10 +23,11 @@ print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
 print(pd.DataFrame(model.feature_importances_, X.columns))
 
 print('Siatka parametrów')
-model = DecisionTreeClassifier()
+#model = DecisionTreeClassifier()
+model = RandomForestClassifier()
 params = {
-    'max_depth': range(2, 4),
-    'min_samples_split': range(2, 4),
+    'max_depth': range(5, 20),
+    'min_samples_split': range(2, 5),
     'criterion': ['gini', 'entropy', 'log_loss'],
     'max_features': range(3, X_train.shape[1]+1, 2)
 }
