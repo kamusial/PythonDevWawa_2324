@@ -50,4 +50,7 @@ plt.show()
 plt.plot(results)
 plt.show()
 
-
+# KNN napisany ręcznie
+df['distance'] = (df.sepallength-sample[0])**2 + (df.sepalwidth-sample[1])**2 +\
+                 (df.petallength-sample[2])**2 + (df.petalwidth-sample[3])**2
+print(df.sort_values('distance').to_string())
