@@ -17,7 +17,13 @@ print('Klasyfikator Decission Tree')
 X = df.iloc[:, :4]   # 4 pierwsze kolumny
 y = df.class_value
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-model = DecisionTreeClassifier()
+model = DecisionTreeClassifier(max_depth=8, min_samples_split=4)
 model.fit(X_train, y_train)
 print(model.score(X_test, y_test))
 print(pd.DataFrame(confusion_matrix(y_test, model.predict(X_test))))
+print(pd.DataFrame(model.feature_importances_, X.columns))
+
+# # granice decyzyjne
+# from mlxtend.plotting import plot_decision_regions
+# plot_decision_regions(X.values, y.values, model)
+# plt.show()
