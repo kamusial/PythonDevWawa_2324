@@ -24,7 +24,6 @@ class MainWindow(QMainWindow):
         self.button = QPushButton('przycisk')
         self.button.clicked.connect(self.button_clicked)
         self.windowTitleChanged.connect(self.wrong_title)
-
         self.setCentralWidget(self.button)
 
     def button_clicked(self):
