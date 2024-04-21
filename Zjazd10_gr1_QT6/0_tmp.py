@@ -6,5 +6,4 @@ app = QApplication(sys.argv)
 window = QDialog()
 window.show()
 
-
 app.exec()
