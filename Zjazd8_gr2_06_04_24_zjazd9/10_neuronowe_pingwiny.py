@@ -17,10 +17,11 @@ from tensorflow import keras
 
 X_train, X_test, y_train, y_test = train_test_split(penguins_features, penguins_target, test_size=0.2)
 
-inputs = keras.Input(shape=[4])
-hidden_layer1 = keras.layers.Dense(4, activation='linear')(inputs)
-hidden_layer2 = keras.layers.Dense(4, activation='linear')(hidden_layer1)
-output_layer = keras.layers.Dense(3, activation='softmax')(hidden_layer2)
+inputs = keras.Input(shape=[X_train.shape[1]])
+hidden_layer1 = keras.layers.Dense(20, activation='relu')(inputs)
+hidden_layer2 = keras.layers.Dense(20, activation='linear')(hidden_layer1)
+hidden_layer3 = keras.layers.Dense(20, activation='linear')(hidden_layer2)
+output_layer = keras.layers.Dense(3, activation='softmax')(hidden_layer3)
 
 model = keras.Model(inputs=inputs, outputs=output_layer)
 # print(model.summary())
