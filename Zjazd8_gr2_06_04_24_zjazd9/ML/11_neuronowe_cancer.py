@@ -41,9 +41,9 @@ print(Counter(y))
 # print(accuracy_score(y_test, y_pred))
 
 score = []
-kfold = RepeatedStratifiedKFold(n_splits=10, n_repeats=1)
+kfold = RepeatedStratifiedKFold(n_splits=10, n_repeats=5)
 for train, test in kfold.split(X, y):
-    model = MLPClassifier(max_iter=1000, hidden_layer_sizes=(100))
+    model = MLPClassifier(max_iter=5000, hidden_layer_sizes=(100, 100, 100, 100, 100))
     X_train, X_test = X.iloc[train, :], X.iloc[test,:]
     y_train, y_test = y.iloc[train], y.iloc[test]
     model.fit(X_train, y_train)
