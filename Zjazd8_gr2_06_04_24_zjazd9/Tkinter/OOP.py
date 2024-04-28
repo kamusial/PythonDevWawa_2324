@@ -13,8 +13,9 @@ class MyGui:
         #menu
         self.menubar = tk.Menu(self.root)
 
-        self.filemenu = tk.Menu(self.menubar)
+        self.filemenu = tk.Menu(self.menubar, tearoff=0)
         self.filemenu.add_command(label='Zamknij', command=exit)
+        self.filemenu.add_separator()
         self.filemenu.add_command(label='Zamknij z potwierdzeniem', command=self.zamknij)
 
         self.filemenu2 = tk.Menu(self.menubar)
@@ -46,6 +47,10 @@ class MyGui:
 
         self.button = tk.Button(self.root, text='Pokaz wiadomosc', font=('Arial', 16), command=self.show_message)
         self.button.pack(padx=10, pady=10)
+
+        self.clearbtn = tk.Button(self.root, text='wyczysc', font=('Arial', 18), command=self.clear)
+        self.clearbtn.pack(padx=10, pady=10)
+
 #zamnięcie okna
         self.root.protocol('WM_DELETE_WINDOW', self.zamknij)
 
@@ -70,5 +75,8 @@ class MyGui:
         print('ZAAAAMKNIJ')
         if messagebox.askyesno(title='Wyjscie', message='Czy chcesz wyjsc?'):
             self.root.destroy()
+
+    def clear(self):
+        self.textbox.delete('1.0', tk.END)
 
 MyGui()
