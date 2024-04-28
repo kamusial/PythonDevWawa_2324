@@ -50,6 +50,13 @@ class MainWindow(QMainWindow):
             QTimeEdit,
         ]
 
+        for w in widgets:
+            layout.addWidget(w())
+
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
+
 app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
