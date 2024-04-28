@@ -24,8 +24,13 @@ class MyGui:
         self.textbox.pack(padx=10, pady=10)
 
         self.check_state = tk.IntVar()
-        self.check = tk.Checkbutton(self.root, text='show', font=('Arial', 15), command=self.show_message)
+        self.check = tk.Checkbutton(self.root, text='show', font=('Arial', 15), variable=self.check_state)
         self.check.pack(padx=10, pady=10)
+
+        self.button = tk.Button(self.root, text='Pokaz wiadomosc', font=('Arial', 16), command=self.show_message)
+        self.button.pack(padx=10, pady=10)
+
+        self.root.protocol('WM_DELETE_WINDOW', self.zamknij)
 
         self.root.mainloop()
 
@@ -43,4 +48,10 @@ class MyGui:
         if event.keysym == 'Return' and event.state == 12:
             print('Nacisnales enter + ctrl')
             self.show_message()
+
+    def zamknij(self):
+        print('ZAAAAMKNIJ')
+        if messagebox.askyesno(title='Wyjscie', message='Czy chcesz wyjsc?'):
+            self.root.destroy()
+
 MyGui()
