@@ -24,7 +24,6 @@ class Color(QWidget):
         palette.setColor(QPalette.ColorRole.Window, QColor(color))
         self.setPalette(palette)
 
-
 app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
