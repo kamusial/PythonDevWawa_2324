@@ -7,13 +7,14 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle('Moja aplikacja')
         self.setFixedSize(QSize(600, 400))
-        button = QPushButton('przycisk')
-        button.pressed.connect(self.button_pressed)
-        button.released.connect(self.button_released)
-        button.clicked.connect(self.button_clicked)
+        self.button = QPushButton('przycisk')
+        self.button.setCheckable(True)
+        self.button.pressed.connect(self.button_pressed)
+        self.button.released.connect(self.button_released)
+        self.button.clicked.connect(self.button_clicked)
+        self.button.clicked.connect(self.button_toogle)
 
-
-        self.setCentralWidget(button)
+        self.setCentralWidget(self.button)
 
     def button_pressed(self):
         print('wcisniety')
@@ -23,6 +24,9 @@ class MainWindow(QMainWindow):
 
     def button_clicked(self):
         print('kliniety')
+
+    def button_toogle(self, checked):
+        print('Stan przycisku: ',checked)
 
 app = QApplication(sys.argv)
 window = MainWindow()
