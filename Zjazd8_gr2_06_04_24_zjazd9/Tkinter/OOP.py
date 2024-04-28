@@ -10,6 +10,23 @@ class MyGui:
         self.root.attributes('-topmost', 1)
         self.root.config(background='Light Blue')
 
+        #menu
+        self.menubar = tk.Menu(self.root)
+
+        self.filemenu = tk.Menu(self.menubar)
+        self.filemenu.add_command(label='Zamknij', command=exit)
+        self.filemenu.add_command(label='Zamknij z potwierdzeniem', command=self.zamknij)
+
+        self.filemenu2 = tk.Menu(self.menubar)
+        self.filemenu2.add_command(label='Zamknij', command=exit)
+        self.filemenu2.add_command(label='pokaz wiadomosc', command=self.show_message)
+
+        self.menubar.add_cascade(menu=self.filemenu, label="pierwszy")
+        self.menubar.add_cascade(menu=self.filemenu2, label="drugi")
+        self.root.config(menu=self.menubar)
+
+
+
         self.label = tk.Label(self.root, text='moj text')
         self.label.config(
             background='#555',
@@ -29,7 +46,7 @@ class MyGui:
 
         self.button = tk.Button(self.root, text='Pokaz wiadomosc', font=('Arial', 16), command=self.show_message)
         self.button.pack(padx=10, pady=10)
-
+#zamnięcie okna
         self.root.protocol('WM_DELETE_WINDOW', self.zamknij)
 
         self.root.mainloop()
