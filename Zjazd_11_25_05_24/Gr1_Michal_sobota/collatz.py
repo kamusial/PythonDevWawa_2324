@@ -21,9 +21,12 @@ def collatz_conjecture(number: int) -> list[int]:
 
 
 def main():
-    steps = collatz_conjecture(3)
-    print(steps)
+    for n in range(2, 101):
+        steps = collatz_conjecture(n)
+        print(len(steps))
 
 
 if __name__ == '__main__':
     main()
+    import time
+    time.sleep(5)
