@@ -31,7 +31,7 @@ def cli():
     ...
 
 
-@click.command
+@cli.command
 @click.argument("prompt")
 def main_file(prompt: str):
     api_key = open(".eden").read().strip()
