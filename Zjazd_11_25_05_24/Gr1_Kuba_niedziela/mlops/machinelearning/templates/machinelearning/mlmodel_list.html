@@ -1,0 +1,18 @@
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Model name</td>
+        <td>Accuracy</td>
+        <td>Published</td>
+        <td>Categorise</td>
+    </tr>
+    {% for obj in object_list %}
+    <tr>
+        <td>{{ obj.id }}</td>
+        <td>{{ obj.upload }}</td>
+        <td>{{ obj.accuracy }}</td>
+        <td>{{ obj.published }}</td>
+        <td></td>
+    </tr>
+</table>
+<a role="button">Train new model</a>
