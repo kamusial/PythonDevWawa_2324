@@ -26,3 +26,9 @@ wywolanie skryptu uczacego model i zapis do pliku -> powrot na widok listy model
 
 zapytanie -> http://127.0.0.1:8000/categorise/<int:id> -> formularz([[x1,x2]]) -> wynik z modelu - kategoryzacja
 
+python -m venv venv
+Windows: .\venv\Scripts\activate
+pip install django==4.2.0
+django-admin startproject mlops
+cd mlops
+django-admin startapp machinelearning
