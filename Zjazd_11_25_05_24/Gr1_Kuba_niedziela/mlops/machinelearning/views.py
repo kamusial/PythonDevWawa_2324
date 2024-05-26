@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import MLModel
 from django.views.generic import ListView
 from .forms import ModelForm, CategoriseForm
-from .model import train_model
+from .model import train_model_and_save_model
 
 
 # Create your views here.
@@ -21,7 +21,7 @@ def train_view(request):
             cd = form.cleaned_data
             factor = cd.get('factor')
             noise = cd.get('noise')
-            train_model(float(factor), float(noise))
+            train_model_and_save_model(request.user, float(factor), float(noise))
             return redirect("machinelearning:list")
     else:
         form = ModelForm()

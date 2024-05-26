@@ -8,6 +8,8 @@ class MLModel(models.Model):
     id = models.BigAutoField(primary_key=True)
     upload = models.FileField()
     accuracy = models.DecimalField(decimal_places=3, max_digits=5)
+    factor = models.DecimalField(decimal_places=3, max_digits=5, null=True)
+    noise = models.DecimalField(decimal_places=3, max_digits=5, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     published = models.DateTimeField(default=datetime.now)
 
