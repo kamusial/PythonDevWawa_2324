@@ -17,7 +17,7 @@ class MLModel(models.Model):
     def __str__(self):
         return str(self.upload) + ' created at ' + str(self.published)
 
-    def predict(self, x, y):
+    def categorise(self, x, y):
         model = joblib.load(self.upload)
         return model.predict([[x,y]])[0]
 

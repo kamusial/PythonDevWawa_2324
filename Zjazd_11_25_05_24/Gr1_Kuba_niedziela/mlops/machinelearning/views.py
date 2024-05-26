@@ -45,7 +45,7 @@ def categorise_view(request, pk):
                 'author': model.author.username,
                 'x': float(x),
                 'y': float(y),
-                'category': int(model.predict(float(x), float(y)))
+                'category': int(model.categorise(float(x), float(y)))
             }
             return JsonResponse(response)
     else:
