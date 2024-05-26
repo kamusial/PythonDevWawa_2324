@@ -21,7 +21,14 @@ def train_model(n_samples, factor, noise, test_size):
     else:
         print('Model was not good enough!')
 
-for i in range(10):
-    train_model(1000, 0.9, 0.1, 0.2)
 
-random.randint(0,99) * 0.01
+def rand_float(a, b):
+    return random.randint(a, b) * 0.01
+
+
+def model_generator(x):
+    for i in range(x):
+        train_model(1000, rand_float(0,99), rand_float(0,10), rand_float(0,25))
+
+
+model_generator(20)
