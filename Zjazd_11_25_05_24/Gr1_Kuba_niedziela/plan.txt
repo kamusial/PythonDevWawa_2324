@@ -1,0 +1,8 @@
+Plan zajec:
+- bubble sort, uruchomienie debuggera
+- maly recap z modeli uczenia maszynowego, jak uzywac ich ponownie
+
+- Co to jest MLOps - jak sie wdraza modele uczenia maszynowego na produkcji
+- Uproszczony projekt MLOps - cel projektu:
+Kierownik projektu chcialby otrzymac mail, kiedy jego zespol wytrenuje nowy, lepszy model.
+Przejdziemy przez wymagania techniczne, ktorych potrzebujemy zeby uzyskac wartosc biznesowa.
