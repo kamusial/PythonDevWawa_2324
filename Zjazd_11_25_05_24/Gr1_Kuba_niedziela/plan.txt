@@ -6,3 +6,23 @@ Plan zajec:
 - Uproszczony projekt MLOps - cel projektu:
 Kierownik projektu chcialby otrzymac mail, kiedy jego zespol wytrenuje nowy, lepszy model.
 Przejdziemy przez wymagania techniczne, ktorych potrzebujemy zeby uzyskac wartosc biznesowa.
+
+Model uczenia maszynowego:
+dane (train,test) , parametry -> if score -> joblib.dumps
+
+Operacja 1:
+parametry -> plik z modelem
+(dane [z biblioteki wbudowanej], factor, noise) -> Model(id, data publikacji, autora, sciezke, skutecznosc)
+Operacja 2:
+model -> predykcja
+(model, [[x1,x2]]) -> grupa (z modelu o skutecznosci)
+
+Proces (zapytanie - URL - widok - odpowiedz):
+zapytanie -> http://127.0.0.1:8000/ -> urls.py kierujemy na funkcje widok listy ->
+widok listy zwraca liste modeli + umozliwia wytrenowanie nowego modelu albo kategoryzacja na istniejacym
+
+zapytanie -> http://127.0.0.1:8000/train (zalogowany admin) -> formularz (factor, noise) ->
+wywolanie skryptu uczacego model i zapis do pliku -> powrot na widok listy modeli
+
+zapytanie -> http://127.0.0.1:8000/categorise/<int:id> -> formularz([[x1,x2]]) -> wynik z modelu - kategoryzacja
+
