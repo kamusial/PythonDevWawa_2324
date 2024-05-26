@@ -31,3 +31,4 @@ def train_model_and_save_model(user, factor, noise):
         m.save()
     os.remove(model_name)
     print(f'Saved model: {model_name}')
+    return m

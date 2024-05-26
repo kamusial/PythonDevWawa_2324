@@ -4,6 +4,8 @@ from django.views.generic import ListView
 from .forms import ModelForm, CategoriseForm
 from .model import train_model_and_save_model
 from django.http import JsonResponse
+from django.db.models import Max
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -22,7 +24,16 @@ def train_view(request):
             cd = form.cleaned_data
             factor = cd.get('factor')
             noise = cd.get('noise')
-            train_model_and_save_model(request.user, float(factor), float(noise))
+            m = train_model_and_save_model(request.user, float(factor), float(noise))
+            best_accuracy = MLModel.objects.aggregate(Max('accuracy'))
+            title = "Model" if m.accuracy < best_accuracy['accuracy__max'] else "New Champion"
+            send_mail(
+                subject=f"Django MLOps Project new {title}",
+                message=f"Model {str(m)} with accuracy: {str(m.accuracy)}",
+                from_email="",
+                recipient_list=[""],
+                fail_silently=False
+            )
             return redirect("machinelearning:list")
     else:
         form = ModelForm()
