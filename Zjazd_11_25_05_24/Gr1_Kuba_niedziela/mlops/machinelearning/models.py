@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-import datetime
+from datetime import datetime
 import joblib
 # Create your models here.
 
@@ -10,3 +10,11 @@ class MLModel(models.Model):
     accuracy = models.DecimalField(decimal_places=3, max_digits=5)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     published = models.DateTimeField(default=datetime.now)
+
+    def __str__(self):
+        return str(self.upload) + ' created at ' + str(self.published)
+
+    def predict(self, x, y):
+        model = joblib.load(self.upload)
+        return model.predict([[x,y]])[0]
+
