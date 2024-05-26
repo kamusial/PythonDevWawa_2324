@@ -24,6 +24,8 @@ def train_view(request):
             cd = form.cleaned_data
             factor = cd.get('factor')
             noise = cd.get('noise')
+            # request.user bedzie tylko jesli user jest zalogowany, logujemy sie pod http://127.0.0.1:8000/admin
+            # admina tworzymy python manage.py createsuperuser
             m = train_model_and_save_model(request.user, float(factor), float(noise))
             best_accuracy = MLModel.objects.aggregate(Max('accuracy'))
             title = "Model" if m.accuracy < best_accuracy['accuracy__max'] else "New Champion"
