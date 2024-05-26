@@ -1,6 +1,5 @@
 import random
 
-import matplotlib.pyplot as plt
 from sklearn.datasets import make_circles
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
@@ -13,9 +12,11 @@ def train_model(n_samples, factor, noise, test_size):
     model = LogisticRegression()
     model.fit(X_train, y_train)
     score = model.score(X_test, y_test)
+    print('\n')
     print(f'Got model with score: {score}.')
-    if score > 0.45:
-        model_name = 'my_model_' + str(random.randint(0,1000))
+    print(f'Using parameters: factor: {factor}, noise: {noise}, test_size: {test_size}.')
+    if score >= 0.68:
+        model_name = 'model_' + str(random.randint(0,1000)) + '_with_score_' + str(score)
         joblib.dump(model, model_name)
         print(f'Saved model: {model_name}')
     else:
@@ -28,7 +29,10 @@ def rand_float(a, b):
 
 def model_generator(x):
     for i in range(x):
-        train_model(1000, rand_float(0,99), rand_float(0,10), rand_float(0,25))
+        train_model(n_samples=1000,
+                    factor=rand_float(0,80),
+                    noise=rand_float(0,5),
+                    test_size=rand_float(1,20)
+                    )
 
-
-model_generator(20)
+model_generator(1000)
