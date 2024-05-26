@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.urls import reverse
 import joblib
 # Create your models here.
 
@@ -20,3 +21,5 @@ class MLModel(models.Model):
         model = joblib.load(self.upload)
         return model.predict([[x,y]])[0]
 
+    def get_absolute_url(self):
+        return reverse('machinelearning:list')

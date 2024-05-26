@@ -32,7 +32,7 @@ tr:nth-child(even) {
         <td>{{ obj.factor }}</td>
         <td>{{ obj.noise }}</td>
         <td>{{ obj.published }}</td>
-        <td></td>
+        <td><a role="button" class="btn" href="{% url 'machinelearning:categorise' obj.id %}">Use</a></td>
     </tr>
     {% endfor %}
 </table>

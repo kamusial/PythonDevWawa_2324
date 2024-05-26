@@ -1,4 +1,4 @@
-<form action="{% url 'machinelearning:categorise' obj.id %}" method="POST">
+<form action="{% url 'machinelearning:categorise' pk %}" method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit">Submit</button>
