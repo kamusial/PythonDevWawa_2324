@@ -45,6 +45,7 @@ class Ui_Form(object):
         self.verticalLayout.addItem(spacerItem)
         self.pushButton = QtWidgets.QPushButton(parent=Form)
         self.pushButton.setObjectName("pushButton")
+
         self.verticalLayout.addWidget(self.pushButton)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout.addItem(spacerItem1)
@@ -66,6 +67,10 @@ class Ui_Form(object):
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
+
+        self.pushButton.clicked.connect(self.calculate)
+
+
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
@@ -77,10 +82,14 @@ class Ui_Form(object):
 
 
     def calculate(self):
+        rent = 50
         dateSelected = self.calendarWidget.selectedDate()
         dateInString = str(dateSelected.toPyDate())
         numDays = self.spinBox.value()
 
+        self.label_reservation.setText("Date of Reservation {}, NUmber of Days {} ".format(dateInString, numDays))
+        total = rent * numDays
+        self.label_relust.setText('Price for day {}, Total {}'.format(rent, total))
 
 if __name__ == "__main__":
     import sys
