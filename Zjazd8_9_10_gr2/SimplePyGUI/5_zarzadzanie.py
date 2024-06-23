@@ -15,4 +15,39 @@ layout = [
 
 window = sg.Window('Contact Management App', layout)
 
-event, values = window.read()
+while True:
+    event, values = window.read()
+
+    if event == sg.WINDOW_CLOSED or event == 'Exit':
+        break
+
+    if event == 'Add Contact':
+        name = values['-NAME-']
+        phone = values['-PHONE-']
+        email = values['-EMAIL-']
+        if name and phone and email:
+            contact = f'{name} | {phone} | {email}'
+            contacts.append(contact)
+            window['-CONTACT LIST-'].update(contacts)
+            window['-NAME-'].update('')
+            window['-PHONE-'].update('')
+            window['-EMAIL-'].update('')
+
+    if event == 'Edit Contact':
+        selected_contact = values['-CONTACT LIST-']
+        if selected_contact:
+            index = contacts.index(selected_contact[0])
+            contacts[index] = f"{values['-NAME-']} | {values['-PHONE-']} | {values['-EMAIL-']}"
+            window['-CONTACT LIST-'].update(contacts)
+            window['-NAME-'].update('')
+            window['-PHONE-'].update('')
+            window['-EMAIL-'].update('')
+
+    if event == 'Remove Contact':
+        selected_contact = values['-CONTACT LIST-']
+        if selected_contact:
+            contacts.remove(selected_contact[0])
+            window['-CONTACT LIST-'].update(contacts)
+
+
+window.close()
